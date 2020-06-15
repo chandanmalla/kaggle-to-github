@@ -44,8 +44,8 @@ I found some bug in above, You can use this, although worth to mention it does n
 KERNEL=telecom-customer-churn
 DATASET=blastchar/telco-customer-churn
 REPO=Telecom-Customer-Churn
-GITHUB_USERNAME=chandanmalla
-KAGGLE_USERNAME=chandanmalla
+GITHUB_USERNAME=$1
+KAGGLE_USERNAME=$2
 echo "Kernel: " $KERNEL
 echo "Dataset: " $DATASET
 echo "Repo: " $REPO
