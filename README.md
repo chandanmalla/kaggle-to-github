@@ -1,5 +1,6 @@
 # kaggle-to-github(for LINUX USERS)
 A Bash command line which pull your Kaggle kernel and push it to Github repo.
+----  Refer: https://www.kaggle.com/docs/api
 ### Step 1
 Spawn an EC2 instance on AWS if you are not an Linux user
 ### Step 2
