@@ -35,3 +35,41 @@ git stage --all
 git commit -m "Added a new kernel"
 git push
 cd ../kaggle-to-github
+
+
+
+
+##################################################################33
+I found some bug in above, You can use this, although worth to mention it does not convert ipynb to py format
+KERNEL=telecom-customer-churn
+DATASET=blastchar/telco-customer-churn
+REPO=Telecom-Customer-Churn
+GITHUB_USERNAME=chandanmalla
+KAGGLE_USERNAME=chandanmalla
+echo "Kernel: " $KERNEL
+echo "Dataset: " $DATASET
+echo "Repo: " $REPO
+echo "Kaggle Username: " $KAGGLE_USERNAME
+echo "Github Username: " $GITHUB_USERNAME
+cd ../
+if [ -d $REPO ]   # for file "if [-f /home/rama/file]" 
+then 
+    echo "Repo already exist"
+else
+    echo "----Pulling Repo----"
+    git clone https://github.com/$GITHUB_USERNAME/$REPO.git
+fi
+echo "----Downloading Kernel----"
+  $KAGGLE_USERNAME/$KERNEL -p ./$REPO
+echo "----Downloading dataset----"
+result=$(kaggle datasets download $DATASET -p ./$REPO/kaggle/input/$KERNEL/ --force  --unzip )
+echo $result
+cd ./$REPO
+
+kaggle kernels pull $KAGGLE_USERNAME/$KERNEL
+
+ls -a
+echo "----Fixing dataset path----"
+git stage --all
+git commit -m "Added a new kernel"
+git push
